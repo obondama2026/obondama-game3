@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>当てろ！お盆玉サバイバル 試作版</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:sans-serif;
+}
+
+body{
+background:#050816;
+color:#fff;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+overflow:hidden;
+}
+
+#title{
+text-align:center;
+}
+
+h1{
+font-size:40px;
+margin-bottom:20px;
+}
+
+button{
+padding:18px 40px;
+font-size:22px;
+border:none;
+border-radius:15px;
+background:#ffb300;
+color:#fff;
+cursor:pointer;
+transition:.15s;
+}
+
+button:active{
+transform:scale(.92);
+}
+
+.hidden{
+display:none;
+}
+</style>
+
+</head>
+
+<body>
+
+<div id="title">
+<h1>🎆当てろ！お盆玉サバイバル🎆</h1>
+<button onclick="startGame()">スタート</button>
+</div>
+
+<script>
+function startGame(){
+alert("試作版スタート！");
+}
+</script>
+
+</body>
+</html>
