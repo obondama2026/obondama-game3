@@ -117,6 +117,42 @@ text-shadow:
 </button>
 
 </div>
+<script>
 
+function startGame(){
+    alert("試作版スタート！");
+}
+
+for(let i=0;i<80;i++){
+
+    const star=document.createElement("div");
+    star.className="star";
+
+    star.style.left=Math.random()*100+"vw";
+    star.style.top=Math.random()*100+"vh";
+
+    star.style.animationDelay=(Math.random()*3)+"s";
+
+    document.body.appendChild(star);
+
+}
+
+for(let i=0;i<6;i++){
+
+    const lantern=document.createElement("div");
+
+    lantern.className="lantern";
+
+    lantern.innerHTML="🏮";
+
+    lantern.style.left=(8+i*15)+"%";
+
+    lantern.style.animationDelay=(i*.2)+"s";
+
+    document.body.appendChild(lantern);
+
+}
+
+</script>
 </body>
 </html>
