@@ -177,41 +177,62 @@ transform:scale(.9);
 </div>
 </div>
 <script>
+<script>
+
+let correct=Math.floor(Math.random()*3);
 
 function startGame(){
-    
+
+}
+
+function selectGift(choice){
+
+if(choice===correct){
+
+document.getElementById("message").innerHTML=
+"🎉 当たり！";
+
+}else{
+
+document.getElementById("message").innerHTML=
+"💥 ハズレ！";
+
+}
+
 }
 
 for(let i=0;i<80;i++){
 
-    const star=document.createElement("div");
-    star.className="star";
+const star=document.createElement("div");
 
-    star.style.left=Math.random()*100+"vw";
-    star.style.top=Math.random()*100+"vh";
+star.className="star";
 
-    star.style.animationDelay=(Math.random()*3)+"s";
+star.style.left=Math.random()*100+"vw";
+star.style.top=Math.random()*100+"vh";
 
-    document.body.appendChild(star);
+star.style.animationDelay=Math.random()*3+"s";
+
+document.body.appendChild(star);
 
 }
 
 for(let i=0;i<6;i++){
 
-    const lantern=document.createElement("div");
+const lantern=document.createElement("div");
 
-    lantern.className="lantern";
+lantern.className="lantern";
 
-    lantern.innerHTML="🏮";
+lantern.innerHTML="🏮";
 
-    lantern.style.left=(8+i*15)+"%";
+lantern.style.left=(8+i*15)+"%";
 
-    lantern.style.animationDelay=(i*.2)+"s";
+lantern.style.animationDelay=(i*.2)+"s";
 
-    document.body.appendChild(lantern);
+document.body.appendChild(lantern);
 
 }
 
+</script>
 </script>
 </body>
 </html>
