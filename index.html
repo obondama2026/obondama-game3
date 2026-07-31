@@ -10,45 +10,93 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:sans-serif;
+font-family:"Yu Gothic","Hiragino Sans","Meiryo",sans-serif;
 }
 
 body{
-background:#050816;
-color:#fff;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
+background:
+radial-gradient(circle at top,#12345d 0%,#061224 45%,#01060f 100%);
 overflow:hidden;
+height:100vh;
+color:#fff;
 }
 
 #title{
+position:absolute;
+inset:0;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
 text-align:center;
+z-index:10;
 }
 
 h1{
-font-size:40px;
-margin-bottom:20px;
+font-size:2.6rem;
+color:#ffd54f;
+text-shadow:
+0 0 8px #ff9800,
+0 0 18px #ff9800,
+0 0 35px #ffeb3b;
+animation:titleGlow 2s infinite;
 }
 
 button{
-padding:18px 40px;
-font-size:22px;
+margin-top:35px;
+padding:18px 45px;
+font-size:1.3rem;
+font-weight:bold;
 border:none;
-border-radius:15px;
-background:#ffb300;
+border-radius:18px;
+background:#ff9800;
 color:#fff;
+box-shadow:0 0 18px orange;
+transition:.12s;
 cursor:pointer;
-transition:.15s;
 }
 
 button:active{
 transform:scale(.92);
 }
 
-.hidden{
-display:none;
+.star{
+position:absolute;
+width:3px;
+height:3px;
+background:white;
+border-radius:50%;
+animation:twinkle 3s infinite;
+}
+
+.lantern{
+position:absolute;
+top:18px;
+font-size:36px;
+animation:swing 2.8s ease-in-out infinite;
+transform-origin:top center;
+}
+
+@keyframes swing{
+0%{transform:rotate(-5deg);}
+50%{transform:rotate(5deg);}
+100%{transform:rotate(-5deg);}
+}
+
+@keyframes twinkle{
+0%,100%{opacity:.2;}
+50%{opacity:1;}
+}
+
+@keyframes titleGlow{
+0%,100%{
+text-shadow:0 0 10px orange;
+}
+50%{
+text-shadow:
+0 0 18px yellow,
+0 0 40px orange;
+}
 }
 </style>
 
