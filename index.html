@@ -186,13 +186,12 @@ function startGame(){
 
 function selectGift(choice){
 
-
 const message = document.getElementById("message");
 
 if(choice===correct){
-    message.innerHTML="🎉 当たり！";
+    message.textContent = "🎉 当たり！";
 }else{
-    message.innerHTML="💥 ハズレ！";
+    message.textContent = "💥 ハズレ！";
 }
 
 }
