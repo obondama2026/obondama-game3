@@ -153,13 +153,28 @@ transform:scale(.9);
 
 <h1>
 🏮 当てろ！<br>
-⅙お盆玉サバイバル！ 🏮
+⅙お盆玉サバイバル！🏮
 </h1>
 
-<button onclick="startGame()">
-ゲームスタート
+<p id="message">
+お盆玉を選ぼう！
+</p>
+
+<div id="choiceArea">
+
+<button class="gift" onclick="selectGift(0)">
+🎁
 </button>
 
+<button class="gift" onclick="selectGift(1)">
+🎁
+</button>
+
+<button class="gift" onclick="selectGift(2)">
+🎁
+</button>
+
+</div>
 </div>
 <script>
 
