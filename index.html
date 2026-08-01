@@ -1,123 +1,198 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>当てろ！お盆玉サバイバル 試作版</title>
+
+<title>当てろ！⅙お盆玉サバイバル！</title>
 
 <style>
+
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:"Yu Gothic","Hiragino Sans","Meiryo",sans-serif;
+font-family:
+"Yu Gothic",
+"Hiragino Sans",
+sans-serif;
+}
+
+html,body{
+
+width:100%;
+height:100%;
+overflow:hidden;
+
 }
 
 body{
+
 background:
-radial-gradient(circle at top,#12345d 0%,#061224 45%,#01060f 100%);
-overflow:hidden;
-height:100vh;
-color:#fff;
+linear-gradient(
+180deg,
+#13284b 0%,
+#071221 55%,
+#02050d 100%);
+
+color:white;
+
+position:relative;
+
 }
 
-#title{
+/* 星空 */
+
+.star{
+
 position:absolute;
+
+width:3px;
+height:3px;
+
+background:white;
+
+border-radius:50%;
+
+animation:
+twinkle 3s infinite;
+
+}
+
+/* 提灯 */
+
+.lantern{
+
+position:absolute;
+
+top:10px;
+
+font-size:38px;
+
+animation:
+lantern 2.8s ease-in-out infinite;
+
+transform-origin:top center;
+
+}
+
+/* タイトル */
+
+#titleScreen{
+
+position:absolute;
+
 inset:0;
+
 display:flex;
+
 flex-direction:column;
+
 justify-content:center;
+
 align-items:center;
-text-align:center;
+
 z-index:10;
+
 }
 
 h1{
+
 font-size:2.6rem;
+
+text-align:center;
+
 color:#ffd54f;
+
 text-shadow:
-0 0 8px #ff9800,
-0 0 18px #ff9800,
-0 0 35px #ffeb3b;
-animation:titleGlow 2s infinite;
+
+0 0 10px orange,
+0 0 20px orange,
+0 0 40px yellow;
+
+animation:
+titleGlow 2s infinite;
+
 }
 
-button{
+#startButton{
+
 margin-top:35px;
-padding:18px 45px;
+
+padding:
+
+18px 45px;
+
 font-size:1.3rem;
-font-weight:bold;
+
 border:none;
-border-radius:18px;
+
+border-radius:16px;
+
 background:#ff9800;
-color:#fff;
-box-shadow:0 0 18px orange;
-transition:.12s;
+
+color:white;
+
+font-weight:bold;
+
 cursor:pointer;
+
+box-shadow:
+0 0 15px orange;
+
+transition:.12s;
+
 }
 
-button:active{
-transform:scale(.92);
+#startButton:active{
+
+transform:scale(.93);
+
 }
 
-.star{
+/* ゲーム画面 */
+
+#game{
+
+display:none;
+
 position:absolute;
-width:3px;
-height:3px;
-background:white;
-border-radius:50%;
-animation:twinkle 3s infinite;
-}
 
-.lantern{
-position:absolute;
-top:18px;
-font-size:36px;
-animation:swing 2.8s ease-in-out infinite;
-transform-origin:top center;
-}
+inset:0;
 
-@keyframes swing{
-0%{transform:rotate(-5deg);}
-50%{transform:rotate(5deg);}
-100%{transform:rotate(-5deg);}
-}
+justify-content:center;
 
-@keyframes twinkle{
-0%,100%{opacity:.2;}
-50%{opacity:1;}
-}
+align-items:center;
 
-@keyframes titleGlow{
-0%,100%{
-text-shadow:0 0 10px orange;
+flex-direction:column;
+
 }
-50%{
-text-shadow:
-0 0 18px yellow,
-0 0 40px orange;
-}
-}
+/* ゲーム画面 */
+
 #message{
 
-margin-top:20px;
-font-size:1.2rem;
+font-size:1.5rem;
+
+margin-bottom:30px;
+
+font-weight:bold;
+
+text-shadow:0 0 10px #fff;
 
 }
 
 #choiceArea{
 
-margin-top:35px;
-
 display:flex;
 
-gap:20px;
+gap:30px;
 
 }
 
 .gift{
 
-font-size:60px;
+font-size:70px;
 
 background:none;
 
@@ -127,13 +202,11 @@ cursor:pointer;
 
 transition:.2s;
 
-box-shadow:none;
-
 }
 
 .gift:hover{
 
-transform:scale(1.1);
+transform:scale(1.08);
 
 }
 
@@ -142,57 +215,204 @@ transform:scale(1.1);
 transform:scale(.9);
 
 }
+
+/* 演出 */
+
+.fade{
+
+animation:fade .5s forwards;
+
+}
+
+@keyframes fade{
+
+from{opacity:1;}
+
+to{opacity:0;}
+
+}
+
+@keyframes twinkle{
+
+0%,100%{opacity:.2;}
+
+50%{opacity:1;}
+
+}
+
+@keyframes lantern{
+
+0%{transform:rotate(-5deg);}
+
+50%{transform:rotate(5deg);}
+
+100%{transform:rotate(-5deg);}
+
+}
+
+@keyframes titleGlow{
+
+0%,100%{
+
+text-shadow:
+0 0 10px orange,
+0 0 25px orange;
+
+}
+
+50%{
+
+text-shadow:
+0 0 20px yellow,
+0 0 45px orange;
+
+}
+
+}
+
 </style>
 
 </head>
 
 <body>
 
-
-<div id="title">
+<div id="titleScreen">
 
 <h1>
+
 🏮 当てろ！<br>
+
 ⅙お盆玉サバイバル！🏮
+
 </h1>
 
-<p id="message">
+<button id="startButton">
+
+ゲームスタート
+
+</button>
+
+</div>
+
+<div id="game">
+
+<div id="message">
+
 お盆玉を選ぼう！
-</p>
+
+</div>
 
 <div id="choiceArea">
 
-<button class="gift" onclick="selectGift(0)">
-🎁
-</button>
+<button class="gift">🎁</button>
 
-<button class="gift" onclick="selectGift(1)">
-🎁
-</button>
+<button class="gift">🎁</button>
 
-<button class="gift" onclick="selectGift(2)">
-🎁
-</button>
+<button class="gift">🎁</button>
 
 </div>
+
 </div>
 <script>
 
-let correct=Math.floor(Math.random()*3);
+const titleScreen =
+document.getElementById("titleScreen");
+
+const game =
+document.getElementById("game");
+
+const message =
+document.getElementById("message");
+
+const gifts =
+document.querySelectorAll(".gift");
+
+let correct = 0;
+
+document
+.getElementById("startButton")
+.onclick = startGame;
 
 function startGame(){
 
+titleScreen.classList.add("fade");
+
+setTimeout(()=>{
+
+titleScreen.style.display="none";
+
+game.style.display="flex";
+
+resetThreeChoice();
+
+},500);
+
 }
 
-function selectGift(choice){
+function resetThreeChoice(){
 
-const message = document.getElementById("message");
+message.textContent="お盆玉を選ぼう！";
 
-if(choice===correct){
-    message.textContent = "🎉 当たり！";
+correct=Math.floor(Math.random()*3);
+
+gifts.forEach((gift,index)=>{
+
+gift.disabled=false;
+
+gift.onclick=()=>selectGift(index);
+
+});
+
+}
+
+function selectGift(index){
+
+gifts.forEach(g=>g.disabled=true);
+
+if(index===correct){
+
+message.textContent="🎉 当たり！";
+
+setTimeout(()=>{
+
+goToTwoChoice();
+
+},1200);
+
 }else{
-    message.textContent = "💥 ハズレ！";
+
+message.textContent="💥 ハズレ！";
+
+setTimeout(()=>{
+
+backToTitle();
+
+},1800);
+
 }
+
+}
+function goToTwoChoice(){
+
+message.textContent="✨ 3択突破！";
+
+document.getElementById("choiceArea").innerHTML=`
+
+<button class="gift">🎁</button>
+
+<button class="gift">🎁</button>
+
+`;
+
+}
+
+function backToTitle(){
+
+game.style.display="none";
+
+titleScreen.style.display="flex";
+
+titleScreen.classList.remove("fade");
 
 }
 
@@ -221,12 +441,13 @@ lantern.innerHTML="🏮";
 
 lantern.style.left=(8+i*15)+"%";
 
-lantern.style.animationDelay=(i*.2)+"s";
+lantern.style.animationDelay=(i*0.2)+"s";
 
 document.body.appendChild(lantern);
 
 }
 
 </script>
+
 </body>
 </html>
